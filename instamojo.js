@@ -46,7 +46,7 @@ function Instamojo(env, key, token, salt) {
     };
 }
 Instamojo.prototype = {	
-	
+	constructor: Instamojo,
 	caller: function(url, method, callback,data) {
 		var self = this;
 		return new Promise(function (resolve, reject) {
@@ -92,31 +92,31 @@ Instamojo.prototype = {
 		})
 	},
 	createRequest: function(data, callback) {
-		var url= BASE_URL + ENDPOINTS.CREATE;
+		var url= this.endPoints.baseUrl + this.endPoints.create;
 		return this.caller(url,'POST',callback,data);
 	},
 	getRequestDetails: function(requestId, callback) {
-		var url= BASE_URL + ENDPOINTS.PAYMENT_STATUS + requestId + '/';
+		var url= this.endPoints.baseUrl + this.endPoints.paymentStatus + requestId + '/';
 		return this.caller(url,'GET',callback);
 	},
 	getPaymentDetails: function(requestId, paymentId, callback) {
-		var url= BASE_URL + ENDPOINTS.PAYMENT_STATUS + requestId + '/' + paymentId + '/';
+		var url= this.endPoints.baseUrl + this.endPoints.paymentStatus + requestId + '/' + paymentId + '/';
 		return this.caller(url,'GET',callback);		
 	},
 	getAllPaymentRequests: function(callback) {
-		var url= BASE_URL + ENDPOINTS.PAYMENT_STATUS;
+		var url= this.endPoints.baseUrl + this.endPoints.paymentStatus;
 		return this.caller(url,'GET',callback);		
 	},
 	createRefund: function(refundData, callback) {
-		var url= BASE_URL + ENDPOINTS.REFUNDS;
+		var url= this.endPoints.baseUrl + this.endPoints.refunds;
 		return this.caller(url,'POST',callback,refundData);
 	},
 	getAllRefunds: function(callback) {
-		var url= BASE_URL + ENDPOINTS.REFUNDS;
+		var url= this.endPoints.baseUrl + this.endPoints.refunds;
 		this.caller(url,'GET',callback);
 	},
 	getRefundDetails: function(refundId, callback) {
-		var url= BASE_URL + ENDPOINTS.REFUNDS + refundId + '/'
+		var url= this.endPoints.baseUrl + this.endPoints.refunds + refundId + '/'
 		return this.caller(url,'GET',callback);
 	},
 	refundFields: function() {		
