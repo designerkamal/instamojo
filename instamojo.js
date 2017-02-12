@@ -61,7 +61,7 @@ Instamojo.prototype = {
 				callback(error);
 			    reject(error);
 			}
-			if (result.statusCode === 200 || result.statusCode === 201) {
+			if (result && body) {
 			    body = JSON.parse(body);
 			    if (typeof callback === "function")
 				callback(null, result, body);
