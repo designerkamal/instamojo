@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/RayeesMir/instamojo#readme",
   "dependencies": {
-    "request": "^2.74.0"
+    "request": "^2.79.0"
   }
 }
