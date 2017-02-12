@@ -78,7 +78,7 @@ Instamojo.prototype = {
 		    delete data.mac;
 		    var keys = Object.keys(data).sort();
 		    keys.forEach(function (key) {
-			str = str + obj[key] + '|';
+			str = str + data[key] + '|';
 		    });
 		    var hashString = str.substr(0, str.length - 1);
 		    var hash = crypto.createHmac('sha1', self.salt).update(hashString).digest('hex');
